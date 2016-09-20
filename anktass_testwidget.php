@@ -38,10 +38,7 @@ class wp_my_plugin extends WP_Widget
             $showNumPosts = '5';
         }
 
-        print "<p>";
-        print _e('Number of posts to show', 'wp_widget_plugin') . " ";
-        print "<input id='" . $this->get_field_id('showNumPosts') . "' name='" . $this->get_field_name('showNumPosts') . "' type='number' value='" . $showNumPosts . "' />";
-        print "</p>";
+        include('views/admin.php');
     }
 
     // Widget admin update handling
@@ -67,11 +64,12 @@ class wp_my_plugin extends WP_Widget
 
             preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', get_the_content(), $first_image); // Extract the first image of the post content.   
             $first_image_url = $first_image['src'];  // Set the first_image_url (just cleaner looking). Empty if no images exists.
+
             include('views/display_widget.php');
 
         endwhile;
 
-        echo '</div>';
+        echo "</div>";
      }
 }
 
